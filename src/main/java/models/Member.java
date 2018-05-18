@@ -6,6 +6,7 @@ public class Member {
     private boolean indoor;
     private boolean beach;
     private RefereeQual refereeQual;
+  //TODO think about adding id
 
     public Member(String name, int registration_number, boolean indoor, boolean beach, RefereeQual refereeQual) {
         this.name = name;
