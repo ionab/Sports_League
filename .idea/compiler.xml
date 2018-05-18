@@ -10,10 +10,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hibernate_start" />
+        <module name="sports_league" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="hibernate_start" target="1.5" />
+      <module name="sports_league" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
