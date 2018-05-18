@@ -11,7 +11,7 @@ public class Coach extends Member {
     public Coach() {
     }
 
-    public Coach(String name, int registration_number, boolean indoor, boolean beach, RefereeQual refereeQual, String qualification, Club club, set<Team> teams) {
+    public Coach(String name, int registration_number, boolean indoor, boolean beach, RefereeQual refereeQual, String qualification, Club club, Set<Team> teams) {
         super(name, registration_number, indoor, beach, refereeQual);
         this.qualification = qualification;
         this.club = club;
@@ -35,11 +35,11 @@ public class Coach extends Member {
         this.club = club;
     }
 
-    public set<Team> getTeams() {
+    public Set<Team> getTeams() {
         return teams;
     }
 
-    public void setTeams(set<Team> teams) {
+    public void setTeams(Set<Team> teams) {
         this.teams = teams;
     }
 }

@@ -1,12 +1,33 @@
 package models;
 
-public enum League {
-    MENS_PREMIER,
-    WOMENS_PREMIER,
-    SVL_WOMENS1,
-    SVL_WOMENS2,
-    SVL_WOMENS3,
-    SVL_MENS1,
-    SVL_MENS2,
-    SVL_MENS3
+import java.util.Set;
+
+public class League {
+    private Set<Team> teams;
+    private LeagueType leagueType;
+
+    public League() {
+
+    }
+
+    public League(Set<Team> teams, LeagueType leagueType) {
+        this.teams = teams;
+        this.leagueType = leagueType;
+    }
+
+    public Set<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(Set<Team> teams) {
+        this.teams = teams;
+    }
+
+    public LeagueType getLeagueType() {
+        return leagueType;
+    }
+
+    public void setLeagueType(LeagueType leagueType) {
+        this.leagueType = leagueType;
+    }
 }
