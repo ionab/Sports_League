@@ -1,10 +1,12 @@
 package models;
 
+import java.util.Set;
+
 public class Coach extends Member {
 
     private String qualification;
     private Club club;
-    private set<Team> teams;
+    private Set<Team> teams;
 
     public Coach() {
     }
