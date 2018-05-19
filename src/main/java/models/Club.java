@@ -1,6 +1,10 @@
 package models;
 
+import javax.persistence.*;
 import java.util.Set;
+
+@Entity
+@Table(name = "teams")
 
 public class Club {
     private Set<Coach> coaches;
@@ -8,6 +12,7 @@ public class Club {
     private Set<Team> teams;
     private Board board;
     private String constitution;
+    private int id;
 
     public Club() {
     }
@@ -18,9 +23,20 @@ public class Club {
         this.teams = teams;
         this.board = board;
         this.constitution = constitution;
+        this.id = id;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    @OneToMany(mappedBy = "club")
     public Set<Coach> getCoaches() {
         return coaches;
     }
@@ -28,7 +44,7 @@ public class Club {
     public void setCoaches(Set<Coach> coaches) {
         this.coaches = coaches;
     }
-
+    @OneToMany(mappedBy = "club")
     public Set<Player> getPlayer() {
         return player;
     }
@@ -36,7 +52,7 @@ public class Club {
     public void setPlayer(Set<Player> player) {
         this.player = player;
     }
-
+    @OneToMany(mappedBy = "club")
     public Set<Team> getTeams() {
         return teams;
     }
@@ -44,7 +60,7 @@ public class Club {
     public void setTeams(Set<Team> teams) {
         this.teams = teams;
     }
-
+    @OneToMany(mappedBy = "club")
     public Board getBoard() {
         return board;
     }
@@ -52,7 +68,7 @@ public class Club {
     public void setBoard(Board board) {
         this.board = board;
     }
-
+    @Column(name = "constitution")
     public String getConstitution() {
         return constitution;
     }

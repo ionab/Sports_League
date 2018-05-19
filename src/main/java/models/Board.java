@@ -11,8 +11,9 @@ public class Board {
     private Set<Member> social_media;
     private Member child_protecion_officer;
     private Member fundraiser;
+    private Club club
 
-    public Board(Member chairperson, Member vice_chairperson, Member secretary, Member treasurer, Set<Member> social, Set<Member> social_media, Member child_protecion_officer, Member fundraiser) {
+    public Board(Member chairperson, Member vice_chairperson, Member secretary, Member treasurer, Set<Member> social, Set<Member> social_media, Member child_protecion_officer, Member fundraiser, Club club) {
         this.chairperson = chairperson;
         this.vice_chairperson = vice_chairperson;
         this.secretary = secretary;
@@ -21,6 +22,7 @@ public class Board {
         this.social_media = social_media;
         this.child_protecion_officer = child_protecion_officer;
         this.fundraiser = fundraiser;
+        this.club = club;
     }
 
 
