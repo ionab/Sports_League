@@ -85,7 +85,7 @@ public class Board {
     public void setTreasurer(Member treasurer) {
         this.treasurer = treasurer;
     }
-    @Column(name = 'social')
+    @Column(name = "social")
     public Set<Member> getSocial() {
         return social;
     }
