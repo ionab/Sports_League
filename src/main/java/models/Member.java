@@ -24,10 +24,8 @@ public class Member {
         this.id = id;
     }
 
-
     public Member() {
     }
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

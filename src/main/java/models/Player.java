@@ -1,11 +1,18 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "players")
+
 public class Player extends Member {
 
     private Position position;
     private boolean captain;
     private Club club;
     private Team team;
+    private int id;
+
 
     public Player(String name, int registration_number, boolean indoor, boolean beach, RefereeQual refereeQual, Position position, boolean captain, Club club, Team team) {
         super(name, registration_number, indoor, beach, refereeQual);
@@ -13,11 +20,25 @@ public class Player extends Member {
         this.captain = captain;
         this.club = club;
         this.team = team;
+        this.id = id;
     }
 
     public Player() {
     }
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    @Column(name = "position")
+    @Enumerated(EnumType.STRING)
     public Position getPosition() {
         return position;
     }
@@ -26,6 +47,7 @@ public class Player extends Member {
         this.position = position;
     }
 
+    @Column(name = "captain")
     public boolean isCaptain() {
         return captain;
     }
@@ -33,7 +55,8 @@ public class Player extends Member {
     public void setCaptain(boolean captain) {
         this.captain = captain;
     }
-
+    @ManyToOne
+    @JoinColumn(name = "club_id", nullable = false )
     public Club getClub() {
         return club;
     }
@@ -42,6 +65,8 @@ public class Player extends Member {
         this.club = club;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false)
     public Team getTeam() {
         return team;
     }
