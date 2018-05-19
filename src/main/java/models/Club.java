@@ -60,7 +60,7 @@ public class Club {
     public void setTeams(Set<Team> teams) {
         this.teams = teams;
     }
-    @OneToMany(mappedBy = "club")
+    @OneToOne(cascade = CascadeType.PERSIST)
     public Board getBoard() {
         return board;
     }
