@@ -1,12 +1,17 @@
 package models;
 
+import javax.persistence.*;
 import java.util.Set;
+
+@Entity
+@Table(name = "coaches")
 
 public class Coach extends Member {
 
     private String qualification;
     private Club club;
     private Set<Team> teams;
+    private int id;
 
     public Coach() {
     }
@@ -16,9 +21,21 @@ public class Coach extends Member {
         this.qualification = qualification;
         this.club = club;
         this.teams = teams;
+        this.id = id;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Column(name = "qualification")
     public String getQualification() {
         return qualification;
     }
@@ -26,7 +43,7 @@ public class Coach extends Member {
     public void setQualification(String qualification) {
         this.qualification = qualification;
     }
-
+    @OneToMany(mappedBy = "coaches")
     public Club getClub() {
         return club;
     }
@@ -35,6 +52,12 @@ public class Coach extends Member {
         this.club = club;
     }
 
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "team_coach",
+            joinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn (name ="coach_id", nullable = false, updatable = false)}
+    )
     public Set<Team> getTeams() {
         return teams;
     }
