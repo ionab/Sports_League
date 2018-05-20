@@ -6,21 +6,21 @@ public class Runner {
     public static void main(String[] args) {
 
 
-        //news up members for the board.
-        Member member = new Member("testname", 1, true ,false, models.RefereeQual.LEVEL1);
-        Member member2 = new Member("testname", 1, true ,false, models.RefereeQual.LEVEL1);
-        Member member3 = new Member("testname", 1, true ,false, models.RefereeQual.LEVEL1);
-        Member member4 = new Member("testname", 1, true ,false, models.RefereeQual.LEVEL1);
-        Member member5 = new Member("testname", 1, true ,false, models.RefereeQual.LEVEL1);
-        Member member6 = new Member("testname", 1, true ,false, models.RefereeQual.LEVEL1);
-
-        //saves members to the database
-        DBHelper.save(member);
-        DBHelper.save(member2);
-        DBHelper.save(member3);
-        DBHelper.save(member4);
-        DBHelper.save(member5);
-        DBHelper.save(member6);
+//        //news up members for the board.
+//        Member member = new Member("testname", 1, true ,false, models.RefereeQual.LEVEL1);
+//        Member member2 = new Member("testname", 1, true ,false, models.RefereeQual.LEVEL1);
+//        Member member3 = new Member("testname", 1, true ,false, models.RefereeQual.LEVEL1);
+//        Member member4 = new Member("testname", 1, true ,false, models.RefereeQual.LEVEL1);
+//        Member member5 = new Member("testname", 1, true ,false, models.RefereeQual.LEVEL1);
+//        Member member6 = new Member("testname", 1, true ,false, models.RefereeQual.LEVEL1);
+//
+//        //saves members to the database
+//        DBHelper.save(member);
+//        DBHelper.save(member2);
+//        DBHelper.save(member3);
+//        DBHelper.save(member4);
+//        DBHelper.save(member5);
+//        DBHelper.save(member6);
 
 //        //news up board for the database.
 //        Board board = new Board(member, member2, member3, member4, member5, member6);

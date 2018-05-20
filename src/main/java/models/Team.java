@@ -135,4 +135,13 @@ public class Team {
     public void setDraws(int draws) {
         this.draws = draws;
     }
+
+    public void addPlayer(Player player){
+        this.players.add(player);
+    }
+
+    public void addCoach(Coach coach){
+        this.coaches.add(coach);
+    }
+
 }
