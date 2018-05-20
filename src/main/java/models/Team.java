@@ -17,6 +17,7 @@ public class Team {
     private int wins;
     private int losses;
     private int id;
+    private Set<Game> games;
 
     public Team() {
     }
@@ -32,6 +33,7 @@ public class Team {
         this.wins = wins;
         this.losses = losses;
         this.id = id;
+        this.games = new HashSet<Game>();
     }
 
     @Id
@@ -125,9 +127,21 @@ public class Team {
     public void setLosses(int losses) {
         this.losses = losses;
     }
+    @ManyToOne
+    @JoinColumn(name = "game_id", nullable = false )
+    public Set<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(Set<Game> games) {
+        this.games = games;
+    }
 
     public void addPlayer(Player player){
         this.players.add(player);
+    }
+    public void addGame(Game game){
+        this.games.add(game);
     }
 
     public void addCoach(Coach coach){

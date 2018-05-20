@@ -11,6 +11,7 @@ public class League {
     private Set<Team> teams;
     private LeagueType leagueType;
     private int id;
+    private Set<Game> games;
 
     public League() {
 
@@ -19,6 +20,7 @@ public class League {
     public League(LeagueType leagueType) {
         this.teams = new HashSet<Team>();
         this.leagueType = leagueType;
+        this.games = new HashSet<Game>();
         this.id = id;
     }
     @Id
@@ -51,6 +53,15 @@ public class League {
     public LeagueType getLeagueType() {
         return leagueType;
     }
+    @ManyToOne
+    @JoinColumn(name = "team_id", nullable = false )
+    public Set<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(Set<Game> games) {
+        this.games = games;
+    }
 
     public void setLeagueType(LeagueType leagueType) {
         this.leagueType = leagueType;
@@ -58,5 +69,9 @@ public class League {
 
     public void addTeam(Team team){
         this.teams.add(team);
+    }
+
+    public void addGame(Game game){
+        this.games.add(game);
     }
 }
