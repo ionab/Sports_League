@@ -17,8 +17,8 @@ public class DBLeague {
        session = HibernateUtil.getSessionFactory().openSession();
        List<Team> sortedTeams = null;
        try {
-           Criteria cr = session.createCriteria(League.class);
-           cr.addOrder(Order.asc("points"));
+           Criteria cr = session.createCriteria(Team.class);
+           cr.addOrder(Order.desc("points"));
            sortedTeams = cr.list();
        } catch(HibernateException e){
            e.printStackTrace();
