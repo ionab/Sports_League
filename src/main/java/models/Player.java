@@ -11,7 +11,7 @@ public class Player extends Member {
     private boolean captain;
     private Club club;
     private Team team;
-    private int id;
+//    private int id;
 
 
     public Player(String name, int registration_number, boolean indoor, boolean beach, RefereeQual refereeQual, Position position, boolean captain, Club club, Team team) {
@@ -20,23 +20,12 @@ public class Player extends Member {
         this.captain = captain;
         this.club = club;
         this.team = team;
-        this.id = id;
     }
 
     public Player() {
     }
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
     @Column(name = "position")
     @Enumerated(EnumType.STRING)
     public Position getPosition() {

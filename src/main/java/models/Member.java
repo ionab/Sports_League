@@ -4,7 +4,7 @@ package models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "members")
+@Inheritance(strategy = InheritanceType.JOINED)
 
 public class Member {
     private String name;
@@ -13,7 +13,6 @@ public class Member {
     private boolean beach;
     private RefereeQual refereeQual;
     private int id;
-  //TODO think about adding id
 
     public Member(String name, int registration_number, boolean indoor, boolean beach, RefereeQual refereeQual) {
         this.name = name;

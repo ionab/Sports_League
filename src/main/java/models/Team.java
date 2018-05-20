@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -22,10 +23,10 @@ public class Team {
     }
    
 
-    public Team(String team_name, Set<Player> players, Set<Coach> coaches, Club club, League league, int points, int wins, int losses, int draws) {
+    public Team(String team_name, Club club, League league, int points, int wins, int losses, int draws) {
         this.team_name = team_name;
-        this.players = players;
-        this.coaches = coaches;
+        this.players = new HashSet<Player>();
+        this.coaches = new HashSet<Coach>();
         this.club = club;
         this.league = league;
         this.points = points;
@@ -45,7 +46,8 @@ public class Team {
     public void setId(int id) {
         this.id = id;
     }
-    @Column(name = "team name")
+
+    @Column(name = "team_name")
     public String getTeam_name() {
         return team_name;
     }
@@ -53,7 +55,8 @@ public class Team {
     public void setTeam_name(String team_name) {
         this.team_name = team_name;
     }
-    @OneToMany(mappedBy = "player_id")
+    
+    @OneToMany(mappedBy = "team")
     public Set<Player> getPlayers() {
         return players;
     }
@@ -82,7 +85,17 @@ public class Team {
     public void setClub(Club club) {
         this.club = club;
     }
-    @OneToMany(mappedBy = "leauge_id")
+
+    //    What we're doing here we had to do manually in Ruby. We're asking IntelliJi to
+    //    to set up a row in the table. If we leave the Join column, it will set up the
+    //    database with a column called the property, but you want to over write firstName to
+    //    first_name etc.
+    //    Below, we set up a column which will have a id relating to the primary key of the relational table
+    //    determined by the getter immediately after it.
+
+
+    @ManyToOne
+    @JoinColumn(name = "teams", nullable = false )
     public League getLeague() {
         return league;
     }

@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,8 +16,8 @@ public class League {
 
     }
 
-    public League(Set<Team> teams, LeagueType leagueType) {
-        this.teams = teams;
+    public League(LeagueType leagueType) {
+        this.teams = new HashSet<Team>();
         this.leagueType = leagueType;
         this.id = id;
     }
@@ -30,7 +31,15 @@ public class League {
     public void setId(int id) {
         this.id = id;
     }
-    @OneToOne(mappedBy = "league")
+
+    //   Here we say we want a one to many relationship with the league's teams.
+//    Adds a column to the database called teams which will have an id in the database
+//    of the teams id. This id is the Id which is generated above. As it's the one to
+//    many relationship and the one side, this can only be the id generated in this class.
+//    This should match the name of what you've called the attribute of the teams class
+//    where you've said the class has a league.
+
+    @OneToMany(mappedBy = "league")
     public Set<Team> getTeams() {
         return teams;
     }

@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,10 +18,10 @@ public class Club {
     public Club() {
     }
 
-    public Club(Set<Coach> coaches, Set<Player> player, Set<Team> teams, Board board, String constitution) {
-        this.coaches = coaches;
-        this.player = player;
-        this.teams = teams;
+    public Club(Board board, String constitution) {
+        this.coaches = new HashSet<Coach>();
+        this.player = new HashSet<Player>();
+        this.teams = new HashSet<Team>();
         this.board = board;
         this.constitution = constitution;
         this.id = id;
@@ -36,6 +37,7 @@ public class Club {
     public void setId(int id) {
         this.id = id;
     }
+
     @OneToMany(mappedBy = "club")
     public Set<Coach> getCoaches() {
         return coaches;

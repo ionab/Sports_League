@@ -11,7 +11,6 @@ public class Coach extends Member {
     private String qualification;
     private Club club;
     private Set<Team> teams;
-    private int id;
 
     public Coach() {
     }
@@ -21,19 +20,8 @@ public class Coach extends Member {
         this.qualification = qualification;
         this.club = club;
         this.teams = teams;
-        this.id = id;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Column(name = "qualification")
     public String getQualification() {
@@ -43,7 +31,10 @@ public class Coach extends Member {
     public void setQualification(String qualification) {
         this.qualification = qualification;
     }
-    @OneToMany(mappedBy = "coaches")
+
+
+    @ManyToOne
+    @JoinColumn(name = "coach_id", nullable = false )
     public Club getClub() {
         return club;
     }
