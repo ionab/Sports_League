@@ -22,19 +22,19 @@ public class Runner {
         DBHelper.save(member5);
         DBHelper.save(member6);
 
-        //news up board for the database.
-        Board board = new Board(member, member2, member3, member4, member5, member6);
-
-        //saves board to the database
-        DBHelper.save(board);
+//        //news up board for the database.
+//        Board board = new Board(member, member2, member3, member4, member5, member6);
+//
+//        //saves board to the database
+//        DBHelper.save(board);
 
         //news up a club for the database.
-        Club su_ragazzi = new Club(board,"test_constitution");
+        Club su_ragazzi = new Club("test_constitution");
 
         //saves club to the database.
         DBHelper.save(su_ragazzi);
 
-        //news up a legue.
+        //news up a league.
         League w_division2 = new League(LeagueType.SVL_WOMENS2);
 
         //saves the league to the database.
@@ -67,6 +67,9 @@ public class Runner {
         DBHelper.save(player7);
         DBHelper.save(player8);
         DBHelper.save(player9);
+
+
+
 
     }
 }

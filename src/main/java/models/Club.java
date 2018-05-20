@@ -9,20 +9,20 @@ import java.util.Set;
 
 public class Club {
     private Set<Coach> coaches;
-    private Set<Player> player;
+    private Set<Player> players;
     private Set<Team> teams;
-    private Board board;
+//    private Board board;
     private String constitution;
     private int id;
 
     public Club() {
     }
 
-    public Club(Board board, String constitution) {
+    public Club(String constitution) {
         this.coaches = new HashSet<Coach>();
-        this.player = new HashSet<Player>();
+        this.players = new HashSet<Player>();
         this.teams = new HashSet<Team>();
-        this.board = board;
+//        this.board = board;
         this.constitution = constitution;
         this.id = id;
     }
@@ -47,12 +47,12 @@ public class Club {
         this.coaches = coaches;
     }
     @OneToMany(mappedBy = "club")
-    public Set<Player> getPlayer() {
-        return player;
+    public Set<Player> getPlayers() {
+        return players;
     }
 
-    public void setPlayer(Set<Player> player) {
-        this.player = player;
+    public void setPlayers(Set<Player> players) {
+        this.players = players;
     }
     @OneToMany(mappedBy = "club")
     public Set<Team> getTeams() {
@@ -62,14 +62,14 @@ public class Club {
     public void setTeams(Set<Team> teams) {
         this.teams = teams;
     }
-    @OneToOne(cascade = CascadeType.PERSIST)
-    public Board getBoard() {
-        return board;
-    }
-
-    public void setBoard(Board board) {
-        this.board = board;
-    }
+//    @OneToOne(cascade = CascadeType.PERSIST)
+//    public Board getBoard() {
+//        return board;
+//    }
+//
+//    public void setBoard(Board board) {
+//        this.board = board;
+//    }
     @Column(name = "constitution")
     public String getConstitution() {
         return constitution;
@@ -78,4 +78,17 @@ public class Club {
     public void setConstitution(String constitution) {
         this.constitution = constitution;
     }
+
+    public void addCoach(Coach coach){
+        this.coaches.add(coach);
+    }
+
+    public void addPlayer(Player player){
+        this.players.add(player);
+    }
+
+    public void addTeam(Team team){
+        this.teams.add(team);
+    }
+
 }
