@@ -127,8 +127,8 @@ public class Team {
     public void setLosses(int losses) {
         this.losses = losses;
     }
-    @ManyToOne
-    @JoinColumn(name = "game_id", nullable = false )
+
+    @OneToMany(mappedBy = "teams")
     public Set<Game> getGames() {
         return games;
     }

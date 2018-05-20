@@ -44,7 +44,10 @@ public class Game {
     public void setDate(GregorianCalendar date) {
         this.date = date;
     }
-    @OneToMany(mappedBy = "games")
+
+
+    @ManyToOne
+    @JoinColumn(name = "game_id", nullable = false)
     public League getLeague() {
         return league;
     }
@@ -52,7 +55,8 @@ public class Game {
     public void setLeague(League league) {
         this.league = league;
     }
-    @OneToMany(mappedBy = "games")
+    @ManyToOne
+    @JoinColumn(name= "team_id", nullable = false)
     public Team getTeamA() {
         return teamA;
     }
@@ -60,12 +64,29 @@ public class Game {
     public void setTeamA(Team teamA) {
         this.teamA = teamA;
     }
-    @OneToMany(mappedBy = "games")
+    @ManyToOne
+    @JoinColumn(name= "team_id", nullable = false)
     public Team getTeamB() {
         return teamB;
     }
 
     public void setTeamB(Team teamB) {
         this.teamB = teamB;
+    }
+
+    public void addResult(int teamAScore, int teamBScore){
+        if (teamAScore == 3 & teamBScore <= 2 ){
+            teamA.add3nilor3_1Win();
+            teamB.add3nilor3_oneLoss();
+        } if (teamAScore ==3 & teamBScore ==2){
+            teamA.add3_2Win();
+            teamB.add3_2Loss();
+        } if (teamAScore <= 2 & teamBScore ==3){
+            teamB.add3nilor3_1Win();
+            teamA.add3nilor3_oneLoss();
+        } if (teamAScore ==2 & teamBScore ==3){
+            teamB.add3_2Win();
+            teamA.add3_2Loss();
+        }
     }
 }

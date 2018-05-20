@@ -2,6 +2,8 @@ import db.DBHelper;
 import db.DBLeague;
 import models.*;
 
+import java.util.GregorianCalendar;
+
 public class Runner {
 
     public static void main(String[] args) {
@@ -42,35 +44,35 @@ public class Runner {
         DBHelper.save(w_division2);
 
         //news up team to seed the database
-        Team women2 = new Team("Womens II", su_ragazzi, w_division2, 0, 0,  0);
+        Team su_ragazzi_women2 = new Team("Womens II", su_ragazzi, w_division2, 0, 0,  0);
         Team jetsw2 = new Team("Jets II", su_ragazzi, w_division2, 0, 0, 0);
 
         //saves team to the database
-        DBHelper.save(women2);
+        DBHelper.save(su_ragazzi_women2);
         DBHelper.save(jetsw2);
 
         //news up players in team to seed database.
-        Player player1 = new Player("testname1", 1, true, true, models.RefereeQual.LEVEL2, Position.MIDDLE_BLOCKER, true, su_ragazzi, women2);
-        Player player2 = new Player("testname1", 2, true, true, models.RefereeQual.LEVEL1, Position.MIDDLE_BLOCKER, false, su_ragazzi, women2);
-        Player player3 = new Player("testname1", 3, true, true, models.RefereeQual.LEVEL4, Position.SETTER, false, su_ragazzi, women2);
-        Player player4 = new Player("testname1", 4, true, true, models.RefereeQual.LEVEL4, Position.LIBERO, false, su_ragazzi, women2);
-        Player player5 = new Player("testname1", 5, true, true, models.RefereeQual.LEVEL4, Position.SWING, false, su_ragazzi, women2);
-        Player player6 = new Player("testname1", 6, true, true, models.RefereeQual.LEVEL4, Position.SWING, false, su_ragazzi, women2);
-        Player player7 = new Player("testname1", 7, true, true, models.RefereeQual.LEVEL4, Position.OFFSETTER, false, su_ragazzi, women2);
-        Player player8 = new Player("testname1", 8, true, true, models.RefereeQual.LEVEL4, Position.OFFSETTER, false, su_ragazzi, women2);
-        Player player9 = new Player("testname1", 9, true, true, models.RefereeQual.LEVEL4, Position.POWER, false, su_ragazzi, women2);
+        Player player1 = new Player("testname1", 1, true, true, models.RefereeQual.LEVEL2, Position.MIDDLE_BLOCKER, true, su_ragazzi, su_ragazzi_women2);
+        Player player2 = new Player("testname1", 2, true, true, models.RefereeQual.LEVEL1, Position.MIDDLE_BLOCKER, false, su_ragazzi, su_ragazzi_women2);
+        Player player3 = new Player("testname1", 3, true, true, models.RefereeQual.LEVEL4, Position.SETTER, false, su_ragazzi, su_ragazzi_women2);
+        Player player4 = new Player("testname1", 4, true, true, models.RefereeQual.LEVEL4, Position.LIBERO, false, su_ragazzi, su_ragazzi_women2);
+        Player player5 = new Player("testname1", 5, true, true, models.RefereeQual.LEVEL4, Position.SWING, false, su_ragazzi, su_ragazzi_women2);
+        Player player6 = new Player("testname1", 6, true, true, models.RefereeQual.LEVEL4, Position.SWING, false, su_ragazzi, su_ragazzi_women2);
+        Player player7 = new Player("testname1", 7, true, true, models.RefereeQual.LEVEL4, Position.OFFSETTER, false, su_ragazzi, su_ragazzi_women2);
+        Player player8 = new Player("testname1", 8, true, true, models.RefereeQual.LEVEL4, Position.OFFSETTER, false, su_ragazzi, su_ragazzi_women2);
+        Player player9 = new Player("testname1", 9, true, true, models.RefereeQual.LEVEL4, Position.POWER, false, su_ragazzi, su_ragazzi_women2);
 
 
         //adds players to team
-        women2.addPlayer(player1);
-        women2.addPlayer(player2);
-        women2.addPlayer(player3);
-        women2.addPlayer(player4);
-        women2.addPlayer(player5);
-        women2.addPlayer(player6);
-        women2.addPlayer(player7);
-        women2.addPlayer(player8);
-        women2.addPlayer(player9);
+        su_ragazzi_women2.addPlayer(player1);
+        su_ragazzi_women2.addPlayer(player2);
+        su_ragazzi_women2.addPlayer(player3);
+        su_ragazzi_women2.addPlayer(player4);
+        su_ragazzi_women2.addPlayer(player5);
+        su_ragazzi_women2.addPlayer(player6);
+        su_ragazzi_women2.addPlayer(player7);
+        su_ragazzi_women2.addPlayer(player8);
+        su_ragazzi_women2.addPlayer(player9);
 
         //saves update to database.
         DBHelper.save(player1);
@@ -118,12 +120,28 @@ public class Runner {
         DBHelper.save(player9);
 
         w_division2.addTeam(jetsw2);
-        w_division2.addTeam(women2);
+        w_division2.addTeam(su_ragazzi_women2);
 
         DBHelper.save(w_division2);
 
         jetsw2.add3_2Win();
         DBHelper.save(jetsw2);
+
+
+
+        Game game = new Game(new GregorianCalendar(2018, 4, 20), w_division2, su_ragazzi_women2, jetsw2);
+        Game game2 = new Game(new GregorianCalendar(2018, 4, 20), w_division2, su_ragazzi_women2, jetsw2);
+        Game game3 = new Game(new GregorianCalendar(2018, 4, 20), w_division2, su_ragazzi_women2, jetsw2);
+        Game game4 = new Game(new GregorianCalendar(2018, 4, 20), w_division2, su_ragazzi_women2, jetsw2);
+
+        DBHelper.save(game);
+
+        game.addResult(2, 3);
+        game2.addResult(3, 0);
+        game3.addResult(3, 0);
+        DBHelper.save(game);
+        DBHelper.save(game2);
+        DBHelper.save(game3);
 
         DBLeague.getLeagueTable(w_division2);
 

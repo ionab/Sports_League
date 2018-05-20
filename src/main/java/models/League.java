@@ -53,8 +53,8 @@ public class League {
     public LeagueType getLeagueType() {
         return leagueType;
     }
-    @ManyToOne
-    @JoinColumn(name = "team_id", nullable = false )
+
+    @OneToMany(mappedBy = "league")
     public Set<Game> getGames() {
         return games;
     }
