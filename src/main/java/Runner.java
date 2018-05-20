@@ -44,7 +44,7 @@ public class Runner {
         DBHelper.save(w_division2);
 
         //news up team to seed the database
-        Team su_ragazzi_women2 = new Team("Womens II", su_ragazzi, w_division2, 0, 0,  0);
+        Team su_ragazzi_women2 = new Team("Su II", su_ragazzi, w_division2, 0, 0,  0);
         Team jetsw2 = new Team("Jets II", su_ragazzi, w_division2, 0, 0, 0);
 
         //saves team to the database
@@ -124,24 +124,24 @@ public class Runner {
 
         DBHelper.save(w_division2);
 
-        jetsw2.add3_2Win();
-        DBHelper.save(jetsw2);
-
-
-
         Game game = new Game(new GregorianCalendar(2018, 4, 20), w_division2, su_ragazzi_women2, jetsw2);
         Game game2 = new Game(new GregorianCalendar(2018, 4, 20), w_division2, su_ragazzi_women2, jetsw2);
         Game game3 = new Game(new GregorianCalendar(2018, 4, 20), w_division2, su_ragazzi_women2, jetsw2);
         Game game4 = new Game(new GregorianCalendar(2018, 4, 20), w_division2, su_ragazzi_women2, jetsw2);
 
         DBHelper.save(game);
+        DBHelper.save(game2);
+        DBHelper.save(game3);
+        DBHelper.save(game4);
 
         game.addResult(2, 3);
         game2.addResult(3, 0);
         game3.addResult(3, 0);
+        game3.addResult(3, 0);
         DBHelper.save(game);
         DBHelper.save(game2);
         DBHelper.save(game3);
+        DBHelper.save(game4);
 
         DBLeague.getLeagueTable(w_division2);
 

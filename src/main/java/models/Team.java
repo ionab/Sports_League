@@ -17,7 +17,8 @@ public class Team {
     private int wins;
     private int losses;
     private int id;
-    private Set<Game> games;
+    private Set<Game> homeGames;
+    private Set<Game> awayGames;
 
     public Team() {
     }
@@ -33,7 +34,8 @@ public class Team {
         this.wins = wins;
         this.losses = losses;
         this.id = id;
-        this.games = new HashSet<Game>();
+        this.homeGames = new HashSet<Game>();
+        this.awayGames = new HashSet<Game>();
     }
 
     @Id
@@ -128,20 +130,33 @@ public class Team {
         this.losses = losses;
     }
 
-    @OneToMany(mappedBy = "teams")
-    public Set<Game> getGames() {
-        return games;
+    @OneToMany(mappedBy = "hometeam")
+    public Set<Game> getHomeGames() {
+        return homeGames;
     }
 
-    public void setGames(Set<Game> games) {
-        this.games = games;
+    public void setHomeGames(Set<Game> games) {
+        this.homeGames = games;
     }
+    @OneToMany(mappedBy = "awayteam")
+    public Set<Game> getAwayGames() {
+        return awayGames;
+    }
+
+    public void setAwayGames(Set<Game> awayGames) {
+        this.awayGames = awayGames;
+    }
+
 
     public void addPlayer(Player player){
         this.players.add(player);
     }
-    public void addGame(Game game){
-        this.games.add(game);
+    public void addHomeGame(Game game){
+        this.homeGames.add(game);
+    }
+
+    public void addAwayGame(Game game){
+        this.awayGames.add(game);
     }
 
     public void addCoach(Coach coach){

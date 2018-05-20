@@ -1,7 +1,5 @@
 package models;
 
-import org.hibernate.annotations.CollectionOfElements;
-
 import javax.persistence.*;
 import java.util.GregorianCalendar;
 
@@ -12,17 +10,17 @@ public class Game {
     private int id;
     private GregorianCalendar date;
     private League league;
-    private Team teamA;
-    private Team teamB;
+    private Team hometeam;
+    private Team awayteam;
 
     public Game() {
     }
 
-    public Game(GregorianCalendar date, League league, Team teamA, Team teamB) {
+    public Game(GregorianCalendar date, League league, Team hometeam, Team awayteam) {
         this.date = date;
         this.league = league;
-        this.teamA = teamA;
-        this.teamB = teamB;
+        this.hometeam = hometeam;
+        this.awayteam = awayteam;
     }
 
 
@@ -56,37 +54,37 @@ public class Game {
         this.league = league;
     }
     @ManyToOne
-    @JoinColumn(name= "team_id", nullable = false)
-    public Team getTeamA() {
-        return teamA;
+    @JoinColumn(name= "hometeam_id", nullable = false)
+    public Team getHometeam() {
+        return hometeam;
     }
 
-    public void setTeamA(Team teamA) {
-        this.teamA = teamA;
+    public void setHometeam(Team hometeam) {
+        this.hometeam = hometeam;
     }
     @ManyToOne
-    @JoinColumn(name= "team_id", nullable = false)
-    public Team getTeamB() {
-        return teamB;
+    @JoinColumn(name= "awayteam_id", nullable = false)
+    public Team getAwayteam() {
+        return awayteam;
     }
 
-    public void setTeamB(Team teamB) {
-        this.teamB = teamB;
+    public void setAwayteam(Team awayteam) {
+        this.awayteam = awayteam;
     }
 
-    public void addResult(int teamAScore, int teamBScore){
-        if (teamAScore == 3 & teamBScore <= 2 ){
-            teamA.add3nilor3_1Win();
-            teamB.add3nilor3_oneLoss();
-        } if (teamAScore ==3 & teamBScore ==2){
-            teamA.add3_2Win();
-            teamB.add3_2Loss();
-        } if (teamAScore <= 2 & teamBScore ==3){
-            teamB.add3nilor3_1Win();
-            teamA.add3nilor3_oneLoss();
-        } if (teamAScore ==2 & teamBScore ==3){
-            teamB.add3_2Win();
-            teamA.add3_2Loss();
+    public void addResult(int hometeam_score, int awayteam_score){
+        if (hometeam_score == 3 & awayteam_score < 2 ){
+            hometeam.add3nilor3_1Win();
+            awayteam.add3nilor3_oneLoss();
+        } if (hometeam_score ==3 & awayteam_score ==2){
+            hometeam.add3_2Win();
+            awayteam.add3_2Loss();
+        } if (hometeam_score < 2 & awayteam_score ==3){
+            awayteam.add3nilor3_1Win();
+            hometeam.add3nilor3_oneLoss();
+        } if (hometeam_score ==2 & awayteam_score ==3){
+            awayteam.add3_2Win();
+            hometeam.add3_2Loss();
         }
     }
 }
