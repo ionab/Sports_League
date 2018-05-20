@@ -16,14 +16,13 @@ public class Team {
     private int points;
     private int wins;
     private int losses;
-    private int draws;
     private int id;
 
     public Team() {
     }
    
 
-    public Team(String team_name, Club club, League league, int points, int wins, int losses, int draws) {
+    public Team(String team_name, Club club, League league, int points, int wins, int losses) {
         this.team_name = team_name;
         this.players = new HashSet<Player>();
         this.coaches = new HashSet<Coach>();
@@ -32,7 +31,6 @@ public class Team {
         this.points = points;
         this.wins = wins;
         this.losses = losses;
-        this.draws = draws;
         this.id = id;
     }
 
@@ -127,14 +125,6 @@ public class Team {
     public void setLosses(int losses) {
         this.losses = losses;
     }
-    @Column(name = "draws")
-    public int getDraws() {
-        return draws;
-    }
-
-    public void setDraws(int draws) {
-        this.draws = draws;
-    }
 
     public void addPlayer(Player player){
         this.players.add(player);
@@ -142,6 +132,23 @@ public class Team {
 
     public void addCoach(Coach coach){
         this.coaches.add(coach);
+    }
+
+    public void add3nilor3_1Win(){
+        this.wins += 1;
+        this.points += 3;
+    }
+
+    public void add3_2Win(){
+        this.wins +=1;
+        this.points +=2;
+    }
+    public void add3nilor3_oneLoss(){
+        this.losses += 1;
+    }
+    public void add3_2Loss(){
+        this.losses +=1;
+        this.points +=1;
     }
 
 }

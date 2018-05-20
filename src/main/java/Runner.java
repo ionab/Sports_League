@@ -1,4 +1,5 @@
 import db.DBHelper;
+import db.DBLeague;
 import models.*;
 
 public class Runner {
@@ -41,10 +42,12 @@ public class Runner {
         DBHelper.save(w_division2);
 
         //news up team to seed the database
-        Team women2 = new Team("Womens II", su_ragazzi, w_division2, 0, 0, 0, 0);
+        Team women2 = new Team("Womens II", su_ragazzi, w_division2, 0, 0,  0);
+        Team jetsw2 = new Team("Jets II", su_ragazzi, w_division2, 0, 0, 0);
 
         //saves team to the database
         DBHelper.save(women2);
+        DBHelper.save(jetsw2);
 
         //news up players in team to seed database.
         Player player1 = new Player("testname1", 1, true, true, models.RefereeQual.LEVEL2, Position.MIDDLE_BLOCKER, true, su_ragazzi, women2);
@@ -57,16 +60,6 @@ public class Runner {
         Player player8 = new Player("testname1", 8, true, true, models.RefereeQual.LEVEL4, Position.OFFSETTER, false, su_ragazzi, women2);
         Player player9 = new Player("testname1", 9, true, true, models.RefereeQual.LEVEL4, Position.POWER, false, su_ragazzi, women2);
 
-        //saves players to database.
-        DBHelper.save(player1);
-        DBHelper.save(player2);
-        DBHelper.save(player3);
-        DBHelper.save(player4);
-        DBHelper.save(player5);
-        DBHelper.save(player6);
-        DBHelper.save(player7);
-        DBHelper.save(player8);
-        DBHelper.save(player9);
 
         //adds players to team
         women2.addPlayer(player1);
@@ -90,10 +83,49 @@ public class Runner {
         DBHelper.save(player8);
         DBHelper.save(player9);
 
+        //news up second set of players to add to another team
+        //news up players in team to seed database.
+        Player jetsplayer1 = new Player("testname1", 1, true, true, models.RefereeQual.LEVEL2, Position.MIDDLE_BLOCKER, true, su_ragazzi, jetsw2);
+        Player jetsplayer2 = new Player("testname1", 2, true, true, models.RefereeQual.LEVEL1, Position.MIDDLE_BLOCKER, false, su_ragazzi, jetsw2);
+        Player jetsplayer3 = new Player("testname1", 3, true, true, models.RefereeQual.LEVEL4, Position.SETTER, false, su_ragazzi, jetsw2);
+        Player jetsplayer4 = new Player("testname1", 4, true, true, models.RefereeQual.LEVEL4, Position.LIBERO, false, su_ragazzi, jetsw2);
+        Player jetsplayer5 = new Player("testname1", 5, true, true, models.RefereeQual.LEVEL4, Position.SWING, false, su_ragazzi, jetsw2);
+        Player jetsplayer6 = new Player("testname1", 6, true, true, models.RefereeQual.LEVEL4, Position.SWING, false, su_ragazzi, jetsw2);
+        Player jetsplayer7 = new Player("testname1", 7, true, true, models.RefereeQual.LEVEL4, Position.OFFSETTER, false, su_ragazzi, jetsw2);
+        Player jetsplayer8 = new Player("testname1", 8, true, true, models.RefereeQual.LEVEL4, Position.OFFSETTER, false, su_ragazzi, jetsw2);
+        Player jetsplayer9 = new Player("testname1", 9, true, true, models.RefereeQual.LEVEL4, Position.POWER, false, su_ragazzi, jetsw2);
 
+        //adds players to other team
+        jetsw2.addPlayer(jetsplayer1);
+        jetsw2.addPlayer(jetsplayer2);
+        jetsw2.addPlayer(jetsplayer3);
+        jetsw2.addPlayer(jetsplayer4);
+        jetsw2.addPlayer(jetsplayer5);
+        jetsw2.addPlayer(jetsplayer6);
+        jetsw2.addPlayer(jetsplayer7);
+        jetsw2.addPlayer(jetsplayer8);
+        jetsw2.addPlayer(jetsplayer9);
 
+        //saves players to database.
+        DBHelper.save(player1);
+        DBHelper.save(player2);
+        DBHelper.save(player3);
+        DBHelper.save(player4);
+        DBHelper.save(player5);
+        DBHelper.save(player6);
+        DBHelper.save(player7);
+        DBHelper.save(player8);
+        DBHelper.save(player9);
 
+        w_division2.addTeam(jetsw2);
+        w_division2.addTeam(women2);
 
+        DBHelper.save(w_division2);
+
+        jetsw2.add3_2Win();
+        DBHelper.save(jetsw2);
+
+        DBLeague.getLeagueTable(w_division2);
 
     }
 }
