@@ -55,4 +55,8 @@ public class League {
     public void setLeagueType(LeagueType leagueType) {
         this.leagueType = leagueType;
     }
+
+    public void addTeam(Team team){
+        this.teams.add(team);
+    }
 }
