@@ -56,4 +56,8 @@ public class Coach extends Member {
     public void setTeams(Set<Team> teams) {
         this.teams = teams;
     }
+
+    public void addTeam(Team team){
+        this.teams.add(team);
+    }
 }
