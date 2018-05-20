@@ -3,6 +3,7 @@ package models;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
 @Entity
 @Table(name = "boards")
 
@@ -53,6 +54,7 @@ public class Board {
     public void setClub(Club club) {
         this.club = club;
     }
+
     @Column(name = "chairperson")
     public Member getChairperson() {
         return chairperson;
