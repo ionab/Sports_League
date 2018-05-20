@@ -68,6 +68,30 @@ public class Runner {
         DBHelper.save(player8);
         DBHelper.save(player9);
 
+        //adds players to team
+        women2.addPlayer(player1);
+        women2.addPlayer(player2);
+        women2.addPlayer(player3);
+        women2.addPlayer(player4);
+        women2.addPlayer(player5);
+        women2.addPlayer(player6);
+        women2.addPlayer(player7);
+        women2.addPlayer(player8);
+        women2.addPlayer(player9);
+
+        //saves update to database.
+        DBHelper.save(player1);
+        DBHelper.save(player2);
+        DBHelper.save(player3);
+        DBHelper.save(player4);
+        DBHelper.save(player5);
+        DBHelper.save(player6);
+        DBHelper.save(player7);
+        DBHelper.save(player8);
+        DBHelper.save(player9);
+
+
+
 
 
 
